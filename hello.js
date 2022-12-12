@@ -3,14 +3,19 @@ const canvasSketch = require("canvas-sketch");
 const settings = {
   dimensions: [2048, 2048],
   animate: true,
+  fps: 60,
 };
 
 const sketch = ({ context, width, height }) => {
+  
   let x = 0;
   let y = 0;
+
   context.fillStyle = "white";
   context.fillRect(0, 0, width, height);
+  
   return ({ context, width, height, frame }) => {
+    if (frame > 138) return;
     x += 10;
 
     if (x > 460) {
