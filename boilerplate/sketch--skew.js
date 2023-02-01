@@ -1,4 +1,4 @@
-const canvasSketch = require("canvas-sketch");
+import canvasSketch from "canvas-sketch";
 
 const settings = {
   dimensions: [1080, 1080],
@@ -16,8 +16,20 @@ const sketch = () => {
     w = width * 0.6;
     h = height * 0.1;
 
+    context.save();
+    context.translate(x, y);
+
     context.strokeStyle = "blue";
-    context.strokeRect(x  -0.5, y  -0.5, w, h);
+    // context.strokeRect(w * -0.5, h * -0.5, w, h);
+
+    context.beginPath();
+    context.moveTo(w * -0.5, h * -0.5);
+    context.lineTo(w * 0.5, h * -0.5);
+    context.lineTo(w * 0.5, h * 0.5);
+    context.lineTo(w * -0.5, h * 0.5);
+    context.closePath();
+
+    context.restore();
   };
 };
 
